@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `uptime`;
+﻿DROP TABLE IF EXISTS `uptime`;
 CREATE TABLE `uptime` (
   `id` int(10) unsigned NOT NULL,
   `starttime` int(10) unsigned NOT NULL DEFAULT '0',
