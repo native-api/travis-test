@@ -9,14 +9,10 @@ arch:
   - amd64
   - arm64
 
-git:
-  depth: 1
-
 services:
   - mysql
 
 script:
-  - mysql -uroot -e 'create database test_mysql;'
   - $CXX --version
   - mysql -V
   - mysql -uroot < sql/create_mysql.sql
