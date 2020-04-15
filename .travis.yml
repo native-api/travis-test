@@ -1,0 +1,26 @@
+sudo: false
+dist: bionic
+
+language: cpp
+compiler:
+  - clang
+
+arch:
+  - amd64
+  - arm64
+
+git:
+  depth: 1
+
+services:
+  - mysql
+
+install:
+  - mysql -uroot -e 'create database test_mysql;'
+
+script:
+  - $CXX --version
+  - mysql -V
+  - mysql -uroot < sql/create_mysql.sql
+  - mysql -utrial -ptrial doit < sql/create_database.sql
+  - mysql -uroot < sql/drop_mysql.sql
