@@ -8,6 +8,9 @@ compiler:
 arch:
   # - amd64
   - arm64
+  - s390x
+  - ppc64le
+  - arm64-graviton2
 
 git:
   depth: 1
@@ -16,15 +19,15 @@ services:
   - mysql
 
 install:
-  - |
-    if [[ $TRAVIS_CPU_ARCH == "arm64" ]]; then
-      sudo bash -ec '
-      echo -e '\''[mysqld]\\nskip-grant-tables'\'' >/etc/mysql/conf.d/grant.cnf
-      systemctl restart mysql
-      mysql -e "UPDATE mysql.user SET Grant_priv='\''Y'\'', Super_priv='\''Y'\'' WHERE User='\''root'\''; flush privileges;"
-      rm /etc/mysql/conf.d/grant.cnf
-      systemctl restart mysql'
-    fi
+  # - |
+    # if [[ $TRAVIS_CPU_ARCH == "arm64" ]]; then
+      # sudo bash -ec '
+      # echo -e '\''[mysqld]\\nskip-grant-tables'\'' >/etc/mysql/conf.d/grant.cnf
+      # systemctl restart mysql
+      # mysql -e "UPDATE mysql.user SET Grant_priv='\''Y'\'', Super_priv='\''Y'\'' WHERE User='\''root'\''; flush privileges;"
+      # rm /etc/mysql/conf.d/grant.cnf
+      # systemctl restart mysql'
+    # fi
   - mysql -uroot -e 'create database test_mysql;'
 
 script:
