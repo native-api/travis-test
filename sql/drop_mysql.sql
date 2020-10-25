@@ -1,4 +1,4 @@
-﻿REVOKE ALL PRIVILEGES ON * . * FROM 'trial'@'localhost';
+REVOKE ALL PRIVILEGES ON * . * FROM 'trial'@'localhost';
 
 REVOKE ALL PRIVILEGES ON `doit` . * FROM 'trial'@'localhost';
 
